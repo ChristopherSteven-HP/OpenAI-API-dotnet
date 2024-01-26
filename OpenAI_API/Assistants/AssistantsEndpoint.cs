@@ -7,12 +7,12 @@ namespace OpenAI_API.Assistants
 	/// <summary>
 	/// OpenAI’s text Assistantss measure the relatedness of text strings by generating an Assistants, which is a vector (list) of floating point numbers. The distance between two vectors measures their relatedness. Small distances suggest high relatedness and large distances suggest low relatedness.
 	/// </summary>
-	public class AssistantsEndpoint : EndpointBase, IEndpoint
-	{
+	public class AssistantsEndpoint : EndpointBase, IAssistantsEndpoint
+    {
 		/// <summary>
 		/// This allows you to send request to the recommended model without needing to specify. Every request uses the <see cref="Model.DefaultModel"/> model
 		/// </summary>
-		public CreateRequest DefaultAssistantsRequestArgs { get; set; } = new CreateRequest() { Model = Model.DefaultModel };
+		public AssistantsRequest DefaultAssistantsRequestArgs { get; set; } = new AssistantsRequest() { Model = Model.DefaultModel };
 
         /// <summary>
         /// The name of the endpoint, which is the final path segment in the API URL.  For example, "Assistantss".
@@ -30,9 +30,9 @@ namespace OpenAI_API.Assistants
 		/// </summary>
 		/// <param name="input">Text to be embedded</param>
 		/// <returns>Asynchronously returns the Assistants result. Look in its <see cref="Data.Assistants"/> property of <see cref="Result.Data"/> to find the vector of floating point numbers</returns>
-		public async Task<Result> CreateAssistantsAsync(string input)
+		public async Task<AssistantsResult> CreateAssistantsAsync(string input)
 		{
-			CreateRequest req = new CreateRequest(DefaultAssistantsRequestArgs.Model, input);
+			AssistantsRequest req = new AssistantsRequest(DefaultAssistantsRequestArgs.Model, input);
 			return await CreateAssistantsAsync(req);
 		}
 
@@ -41,9 +41,9 @@ namespace OpenAI_API.Assistants
 		/// </summary>
 		/// <param name="request">Request to be send</param>
 		/// <returns>Asynchronously returns the Assistants result. Look in its <see cref="Data.Assistants"/> property of <see cref="Result.Data"/> to find the vector of floating point numbers</returns>
-		public async Task<Result> CreateAssistantsAsync(CreateRequest request)
+		public async Task<AssistantsResult> CreateAssistantsAsync(AssistantsRequest request)
 		{
-			return await HttpPost<Result>(postData: request);
+			return await HttpPost<AssistantsResult>(postData: request);
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace OpenAI_API.Assistants
 		/// <returns>Asynchronously returns the first Assistants result as an array of floats.</returns>
 		public async Task<float[]> GetAssistantssAsync(string input)
 		{
-			CreateRequest req = new CreateRequest(DefaultAssistantsRequestArgs.Model, input);
+            AssistantsRequest req = new AssistantsRequest(DefaultAssistantsRequestArgs.Model, input);
 			var AssistantsResult = await CreateAssistantsAsync(req);
 			return AssistantsResult?.Data?[0]?.Assistants;
 		}

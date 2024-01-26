@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OpenAI_API.Models;
+using System.Collections.Generic;
 
 namespace OpenAI_API.Assistants
 
@@ -9,7 +10,7 @@ namespace OpenAI_API.Assistants
 	/// Represents a request to the Completions API. Matches with the docs at <see href="https://platform.openai.com/docs/api-reference/Assistantss">the OpenAI docs</see>
 	/// </summary>
 	public class AssistantsRequest
-	{
+    {
 		/// <summary>
 		/// ID of the model to use. You can use <see cref="ModelsEndpoint.GetModelsAsync()"/> to see all of your available models, or use a standard model like <see cref="Model.AdaTextAssistants"/>.
 		/// </summary>
@@ -59,20 +60,20 @@ namespace OpenAI_API.Assistants
 		/// </summary>
 		/// <param name="model">The model to use. You can use <see cref="ModelsEndpoint.GetModelsAsync()"/> to see all of your available models, or use a standard model like <see cref="Model.AdaTextAssistants"/>.</param>
 		/// <param name="input">The prompt to transform</param>
-		public AssistantsRequest(Model model, string input)
+		public AssistantsRequest(Model model, string name)
 		{
 			Model = model;
-			this.Input = input;
+			this.Name = name;
 		}
 
 		/// <summary>
 		/// Creates a new <see cref="AssistantsRequest"/> with the specified input and the <see cref="Model.AdaTextAssistants"/> model.
 		/// </summary>
 		/// <param name="input">The prompt to transform</param>
-		public AssistantsRequest(string input)
+		public AssistantsRequest(string name)
 		{
 			Model = OpenAI_API.Models.Model.DefaultModel;
-			this.Input = input;
+			this.Name = name;
 		}
 	}
 }
