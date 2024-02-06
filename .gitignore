@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /OpenAI_Tests/Properties/launchSettings.json
+/nuget.config
