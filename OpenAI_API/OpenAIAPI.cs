@@ -20,7 +20,7 @@ namespace OpenAI_API
 		/// for OpenAI, should be "https://api.openai.com/{0}/{1}"
 		/// for Azure, should be "https://(your-resource-name.openai.azure.com/openai/deployments/(deployment-id)/{1}?api-version={0}"
 		/// </summary>
-		public string ApiUrlFormat { get; set; } = "https://api.openai.com/{0}/{1}";
+		public string ApiUrlFormat { get; set; } = "https://oai-ceast-voltron-sandbox.openai.azure.com/openai/deployments/(deployment-id)/{1}?api-version={0}";
 
 		/// <summary>
 		/// Version of the Rest Api

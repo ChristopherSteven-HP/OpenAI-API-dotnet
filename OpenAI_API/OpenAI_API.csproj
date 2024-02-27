@@ -15,7 +15,7 @@
 		<Title>OpenAI API</Title>
 		<PackageReleaseNotes>Adds updated models as of December 13, 2023, including the new GPT-4 Vision, GPT-4 Turbo, and DALL-E 3. Adds text-to-speech as well as audio transcriptions and translations (Whisper).</PackageReleaseNotes>
 		<PackageId>OpenAI</PackageId>
-		<Version>1.11</Version>
+		<Version>1.10.2</Version>
 		<AssemblyVersion>1.10.0.0</AssemblyVersion>
 		<FileVersion>1.10.0.0</FileVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -49,6 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Azure.Identity" Version="1.11.0-beta.1" />
+		<PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />

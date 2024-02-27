@@ -15,7 +15,7 @@ namespace OpenAI_API
 	public interface IOpenAIAPI
     {
         /// <summary>
-        /// Base url for OpenAI
+        /// Base url for OpenAIen
         /// for OpenAI, should be "https://api.openai.com/{0}/{1}"
         /// for Azure, should be "https://(your-resource-name.openai.azure.com/openai/deployments/(deployment-id)/{1}?api-version={0}"
         /// </summary>

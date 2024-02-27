@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Azure.Core;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -15,6 +18,7 @@ namespace OpenAI_API
 		/// The API key, required to access the API endpoint.
 		/// </summary>
 		public string ApiKey { get; set; }
+
 		/// <summary>
 		/// The Organization ID to count API requests against.  This can be found at https://beta.openai.com/account/org-settings.
 		/// </summary>
@@ -50,7 +54,20 @@ namespace OpenAI_API
 			this.OpenAIOrganization = openAIOrganization;
 		}
 
-		private static APIAuthentication cachedDefault = null;
+        /// <summary>
+        /// Instantiates a new Authentication object with a given Azure Key Vault <paramref name="keyVaultName"/> and <paramref name="keyName"/>.
+        /// </summary>
+        public APIAuthentication(string keyVaultName, string keyName, TokenCredential clientCredentials = null)
+        {
+            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
+			var credentials = clientCredentials ?? new DefaultAzureCredential();
+            var client = new SecretClient(new Uri(kvUri), credentials);
+			KeyVaultSecret secret = client.GetSecret(keyName);
+
+			this.ApiKey = secret.Value;
+        }
+
+        private static APIAuthentication cachedDefault = null;
 
 		/// <summary>
 		/// The default authentication to use when no other auth is specified.  This can be set manually, or automatically loaded via environment variables or a config file.  <seealso cref="LoadFromEnv"/><seealso cref="LoadFromPath(string, string, bool)"/>
