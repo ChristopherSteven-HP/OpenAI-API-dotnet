@@ -340,3 +340,4 @@ ASALocalRun/
 healthchecksdb
 /OpenAI_API.Harness/properties/launchSettings.json
 /nuget.config
+/Artifact Publish.bat
