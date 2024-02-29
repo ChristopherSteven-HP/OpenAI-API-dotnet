@@ -15,7 +15,7 @@
 		<Title>OpenAI API</Title>
 		<PackageReleaseNotes>Adds updated models as of December 13, 2023, including the new GPT-4 Vision, GPT-4 Turbo, and DALL-E 3. Adds text-to-speech as well as audio transcriptions and translations (Whisper).</PackageReleaseNotes>
 		<PackageId>OpenAI</PackageId>
-		<Version>1.10.2</Version>
+		<Version>1.10.3</Version>
 		<AssemblyVersion>1.10.0.0</AssemblyVersion>
 		<FileVersion>1.10.0.0</FileVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>

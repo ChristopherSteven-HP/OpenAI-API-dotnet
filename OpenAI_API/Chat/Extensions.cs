@@ -30,5 +30,18 @@ namespace OpenAI_API.Chat
                 tokens += encoding.Encode(message?.TextContent).Count;
 			return tokens;
         }
-	}
+
+        /// <summary>
+        /// Estimates the Number of Tokens a message will incure
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static int TokenCount(string message)
+        {
+            int tokens = 0;
+            var encoding = GptEncoding.GetEncodingForModel("gpt-4");
+            tokens += encoding.Encode(message).Count;
+            return tokens;
+        }
+    }
 }
