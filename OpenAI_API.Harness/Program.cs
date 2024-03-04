@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Azure.Identity;
+using OpenAI_API.Chat;
 using System;
 using System.Diagnostics;
 
@@ -17,7 +18,13 @@ var auth = new OpenAI_API.APIAuthentication(keyVaultName, keyName, clientCredent
 
 var _OpenAPI = OpenAI_API.OpenAIAPI.ForAzure(openAIResourceName, openAIDeploymentName, auth);
 var chat = _OpenAPI.Chat.CreateConversation();
-chat.AppendUserInput("Test");
+for(var i = 0; i < 1000000000;  i++)
+{
+    chat.AppendUserInput("Test");
+}
+
+var tokens = chat.TokenCount();
+
 var response = await chat.GetResponseFromChatbotAsync();
 Console.WriteLine(response);
 Debugger.Break();

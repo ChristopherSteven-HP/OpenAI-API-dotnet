@@ -24,10 +24,13 @@ namespace OpenAI_API.Chat
 		/// <returns></returns>
 		public static int TokenCount(this OpenAI_API.Chat.Conversation chat)
 		{
+            var t0 = DateTime.Now;
 			int tokens = 0;
             var encoding = GptEncoding.GetEncodingForModel("gpt-4");
 			foreach(var message in chat.Messages)
                 tokens += encoding.Encode(message?.TextContent).Count;
+
+            var elapsed = (DateTime.Now - t0).TotalMilliseconds;
 			return tokens;
         }
 
