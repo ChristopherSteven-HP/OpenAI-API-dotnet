@@ -18,7 +18,7 @@ var auth = new OpenAI_API.APIAuthentication(keyVaultName, keyName, clientCredent
 
 var _OpenAPI = OpenAI_API.OpenAIAPI.ForAzure(openAIResourceName, openAIDeploymentName, auth);
 var chat = _OpenAPI.Chat.CreateConversation();
-for(var i = 0; i < 1000000000;  i++)
+for(var i = 0; i < 5;  i++)
 {
     chat.AppendUserInput("Test");
 }
