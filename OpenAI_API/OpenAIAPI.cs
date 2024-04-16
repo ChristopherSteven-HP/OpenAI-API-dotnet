@@ -22,10 +22,13 @@ namespace OpenAI_API
 		/// </summary>
 		public string ApiUrlFormat { get; set; } = "https://api.openai.com/{0}/{1}";
 
-		/// <summary>
-		/// Version of the Rest Api
-		/// </summary>
-		public string ApiVersion { get; set; } = "v1";
+        public string ApiBaseUrlFormat { get; set; } = "https://api.openai.com/{0}/{1}";
+
+
+        /// <summary>
+        /// Version of the Rest Api
+        /// </summary>
+        public string ApiVersion { get; set; } = "v1";
 
 		/// <summary>
 		/// The API authentication information to use for API calls
@@ -66,9 +69,10 @@ namespace OpenAI_API
 		public static OpenAIAPI ForAzure(string YourResourceName, string deploymentId, APIAuthentication apiKey = null)
 		{
 			OpenAIAPI api = new OpenAIAPI(apiKey);
-			api.ApiVersion = "2023-05-15";
+			api.ApiVersion = "2024-02-15-preview";
 			api.ApiUrlFormat = $"https://{YourResourceName}.openai.azure.com/openai/deployments/{deploymentId}/" + "{1}?api-version={0}";
-			return api;
+            api.ApiBaseUrlFormat = $"https://{YourResourceName}.openai.azure.com/openai/" + "{1}?api-version={0}";
+            return api;
 		}
 
 		/// <summary>

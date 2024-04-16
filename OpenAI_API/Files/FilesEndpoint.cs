@@ -29,7 +29,7 @@ namespace OpenAI_API.Files
 		/// <exception cref="HttpRequestException"></exception>
 		public async Task<List<File>> GetFilesAsync()
 		{
-			return (await HttpGet<FilesData>()).Data;
+			return (await HttpGet<FilesData>(BaseUrl)).Data;
 		}
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace OpenAI_API.Files
 				{ new ByteArrayContent(System.IO.File.ReadAllBytes(filePath)), "file", Path.GetFileName(filePath) }
 			};
 
-			return await HttpPost<File>(Url, content);
+			return await HttpPost<File>(BaseUrl, content);
 		}
 
 		/// <summary>

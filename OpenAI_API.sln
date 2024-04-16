@@ -13,9 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAI_Tests", "OpenAI_Tests\OpenAI_Tests.csproj", "{8D52C286-BCE2-41A1-8342-F088676F1522}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAI_API.Harness", "OpenAI_API.Harness\OpenAI_API.Harness.csproj", "{59196A48-1C2A-429E-9351-E1A9FB2A6643}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAI_API.Harness", "OpenAI_API.Harness\OpenAI_API.Harness.csproj", "{59196A48-1C2A-429E-9351-E1A9FB2A6643}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		{99C80D3E-3F0F-4ACC-900D-7AAE6230A780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99C80D3E-3F0F-4ACC-900D-7AAE6230A780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99C80D3E-3F0F-4ACC-900D-7AAE6230A780}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D52C286-BCE2-41A1-8342-F088676F1522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D52C286-BCE2-41A1-8342-F088676F1522}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D52C286-BCE2-41A1-8342-F088676F1522}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D52C286-BCE2-41A1-8342-F088676F1522}.Release|Any CPU.Build.0 = Release|Any CPU
 		{59196A48-1C2A-429E-9351-E1A9FB2A6643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59196A48-1C2A-429E-9351-E1A9FB2A6643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59196A48-1C2A-429E-9351-E1A9FB2A6643}.Release|Any CPU.ActiveCfg = Release|Any CPU

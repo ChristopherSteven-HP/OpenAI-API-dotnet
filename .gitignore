@@ -341,3 +341,4 @@ healthchecksdb
 /OpenAI_API.Harness/properties/launchSettings.json
 /nuget.config
 /Artifact Publish.bat
+/OpenAI_Tests/Properties/launchSettings.json

@@ -16,7 +16,7 @@ namespace OpenAI_API
 	/// </summary>
 	public abstract class EndpointBase
 	{
-		private const string UserAgent = "okgodoit/dotnet_openai_api";
+		private const string UserAgent = "StevenC/HP";
 
 		/// <summary>
 		/// The internal reference to the API, mostly used for authentication
@@ -48,12 +48,23 @@ namespace OpenAI_API
 			}
 		}
 
-		/// <summary>
-		/// Gets an HTTPClient with the appropriate authorization and other headers set
-		/// </summary>
-		/// <returns>The fully initialized HttpClient</returns>
-		/// <exception cref="AuthenticationException">Thrown if there is no valid authentication.  Please refer to <see href="https://github.com/OkGoDoIt/OpenAI-API-dotnet#authentication"/> for details.</exception>
-		protected HttpClient GetClient()
+        /// <summary>
+        /// Gets the URL of the endpoint, based on the base OpenAI API URL followed by the endpoint name.  For example "https://api.openai.com/v1/completions"
+        /// </summary>
+        protected string BaseUrl
+        {
+            get
+            {
+                return string.Format(_Api.ApiBaseUrlFormat, _Api.ApiVersion, Endpoint);
+            }
+        }
+
+        /// <summary>
+        /// Gets an HTTPClient with the appropriate authorization and other headers set
+        /// </summary>
+        /// <returns>The fully initialized HttpClient</returns>
+        /// <exception cref="AuthenticationException">Thrown if there is no valid authentication.  Please refer to <see href="https://github.com/OkGoDoIt/OpenAI-API-dotnet#authentication"/> for details.</exception>
+        protected HttpClient GetClient()
 		{
 			if (_Api.Auth?.ApiKey is null)
 			{
