@@ -1,4 +1,5 @@
-﻿using OpenAI_API.Audio;
+﻿using OpenAI_API.Assistants;
+using OpenAI_API.Audio;
 using OpenAI_API.Chat;
 using OpenAI_API.Completions;
 using OpenAI_API.Embedding;
@@ -57,7 +58,8 @@ namespace OpenAI_API
 			TextToSpeech = new TextToSpeechEndpoint(this);
 			Transcriptions = new TranscriptionEndpoint(this, false);
 			Translations = new TranscriptionEndpoint(this, true);
-		}
+            Assistants = new AssistantsEndpoint(this);
+        }
 
 		/// <summary>
 		/// Instantiates a version of the API for connecting to the Azure OpenAI endpoint instead of the main OpenAI endpoint.
@@ -124,5 +126,10 @@ namespace OpenAI_API
 		/// The endpoint for the audio translation API.  This allows you to generate English text from audio in other languages.  See <seealso href="https://platform.openai.com/docs/guides/speech-to-text/translations"/>
 		/// </summary>
 		public ITranscriptionEndpoint Translations { get; }
-	}
+
+        /// <summary>
+        /// The endpoint for the Assistants API.  This allows you to generate English text from audio in other languages.  See <seealso href="https://platform.openai.com/docs/guides/speech-to-text/translations"/>
+        /// </summary>
+        public IAssistantsEndpoint Assistants { get; }
+    }
 }

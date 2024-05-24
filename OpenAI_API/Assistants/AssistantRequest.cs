@@ -9,11 +9,9 @@ namespace OpenAI_API.Assistants
 	/// <summary>
 	/// Represents a request to the Completions API. Matches with the docs at <see href="https://platform.openai.com/docs/api-reference/Assistantss">the OpenAI docs</see>
 	/// </summary>
-	public class AssistantsRequest
+	public class AssistantRequest
     {
-		/// <summary>
-		/// ID of the model to use. You can use <see cref="ModelsEndpoint.GetModelsAsync()"/> to see all of your available models, or use a standard model like <see cref="Model.AdaTextAssistants"/>.
-		/// </summary>
+		
 		[JsonProperty("model")]
 		public string Model { get; set; }
 
@@ -48,29 +46,29 @@ namespace OpenAI_API.Assistants
         public string[]? FileIds { get; set; }
 
         /// <summary>
-        /// Cretes a new, empty <see cref="AssistantsRequest"/>
+        /// Cretes a new, empty <see cref="AssistantRequest"/>
         /// </summary>
-        public AssistantsRequest()
+        public AssistantRequest()
 		{
 
 		}
 
 		/// <summary>
-		/// Creates a new <see cref="AssistantsRequest"/> with the specified parameters
+		/// Creates a new <see cref="AssistantRequest"/> with the specified parameters
 		/// </summary>
 		/// <param name="model">The model to use. You can use <see cref="ModelsEndpoint.GetModelsAsync()"/> to see all of your available models, or use a standard model like <see cref="Model.AdaTextAssistants"/>.</param>
 		/// <param name="input">The prompt to transform</param>
-		public AssistantsRequest(Model model, string name)
+		public AssistantRequest(Model model, string name)
 		{
 			Model = model;
 			this.Name = name;
 		}
 
 		/// <summary>
-		/// Creates a new <see cref="AssistantsRequest"/> with the specified input and the <see cref="Model.AdaTextAssistants"/> model.
+		/// Creates a new <see cref="AssistantRequest"/> with the specified input and the <see cref="Model.AdaTextAssistants"/> model.
 		/// </summary>
 		/// <param name="input">The prompt to transform</param>
-		public AssistantsRequest(string name)
+		public AssistantRequest(string name)
 		{
 			Model = OpenAI_API.Models.Model.DefaultModel;
 			this.Name = name;

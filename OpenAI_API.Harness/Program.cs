@@ -19,12 +19,34 @@ string openAIDeploymentName = Environment.GetEnvironmentVariable("OPENAI_DEPLOYM
 var auth = new OpenAI_API.APIAuthentication(SECRET_VALUE);
 var _OpenAPI = OpenAI_API.OpenAIAPI.ForAzure(openAIResourceName, openAIDeploymentName, auth);
 
+
+//Test Models
 var models = await _OpenAPI.Models.GetModelsAsync();
 var modelNames = models.Select(t => t.ModelID);
-var test = await _OpenAPI.Files.GetFilesAsync();
 
+
+//Test Assistants
+var assistants = await _OpenAPI.Assistants.GetAssistantsAsync();
+
+var assistantRequest = new OpenAI_API.Assistants.AssistantRequest();
+assistantRequest.Model = "";
+assistantRequest.Name = "Test";
+
+
+var assistant = await _OpenAPI.Assistants.CreateAssistantAsync(assistantRequest);
+
+assistants = await _OpenAPI.Assistants.GetAssistantsAsync();
+
+foreach (var a in assistants)
+{
+    if(a.Name.StartsWith("Test"))
+        await _OpenAPI.Assistants.DeleteAssistantAsync(a.Id);
+}
+
+//Test Files
+var files = await _OpenAPI.Files.GetFilesAsync();
 await _OpenAPI.Files.UploadFileAsync("training.jsonl", "fine-tune");
-test = await _OpenAPI.Files.GetFilesAsync();
+files = await _OpenAPI.Files.GetFilesAsync();
 var chat = _OpenAPI.Chat.CreateConversation();
 
 chat.Model = OpenAI_API.Models.Model.GPT4;

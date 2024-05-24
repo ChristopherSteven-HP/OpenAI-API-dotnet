@@ -39,7 +39,7 @@ namespace OpenAI_API.Files
 		/// <returns></returns>
 		public async Task<File> GetFileAsync(string fileId)
 		{
-			return await HttpGet<File>($"{Url}/{fileId}");
+			return await HttpGet<File>($"{BaseUrl}/{fileId}");
 		}
 
 
@@ -50,7 +50,7 @@ namespace OpenAI_API.Files
 		/// <returns></returns>
 		public async Task<string> GetFileContentAsStringAsync(string fileId)
 		{
-			return await HttpGetContent($"{Url}/{fileId}/content");
+			return await HttpGetContent($"{BaseUrl}/{fileId}/content");
 		}
 
 		/// <summary>
@@ -60,7 +60,7 @@ namespace OpenAI_API.Files
 		/// <returns></returns>
 		public async Task<File> DeleteFileAsync(string fileId)
 		{
-			return await HttpDelete<File>($"{Url}/{fileId}");
+			return await HttpDelete<File>($"{BaseUrl}/{fileId}");
 		}
 
 
